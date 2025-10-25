@@ -18,7 +18,8 @@ function createGameBoard () {
 
     const resetGameBoard = (gameBoxes) => {
         board.map((element) => element = "");
-        gameBoxes.map((element) => element.innerHTML = "");
+        console.log(gameBoxes);
+        gameBoxes.forEach((element) => element.innerHTML = "");
     }
     
     const boardHasEmptySpace = () => board.some((value) => value === "");
@@ -29,7 +30,7 @@ function createGameBoard () {
 const game = ( function () {
     const player1 = createPlayer("Player 1", "X");
     const player2 = createPlayer("Player 2", "O");
-    const {getBoard, addToBoard, boardHasEmptySpace} = createGameBoard(); 
+    const {getBoard, addToBoard, boardHasEmptySpace, resetGameBoard} = createGameBoard(); 
 
     let currentPlayer = player1;
     const getCurrentPlayer = () => currentPlayer;
@@ -46,21 +47,21 @@ const game = ( function () {
         }
     }
     
-    return {getCurrentPlayer, makePlay, getBoard, boardHasEmptySpace}
+    return {getCurrentPlayer, makePlay, getBoard, boardHasEmptySpace, resetGameBoard}
 
 })();
 
 const gameDiv = document.querySelector("#game-div");
-const gameBoxes = document.querySelectorAll(".game-box");
+const gameBoxes = document.querySelectorAll('.game-box');
 
 // Add event listener to the game box to add the play to the board
 document.querySelectorAll('.game-box').forEach((el, i) => {
     el.addEventListener('click', () => game.makePlay(el.id, el))
 } )
 
-
-
-
+document.querySelector("#reset-button").addEventListener("click", () => {
+    game.resetGameBoard(gameBoxes);
+});
 
 
 
