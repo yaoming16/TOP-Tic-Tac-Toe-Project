@@ -1,29 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles.css">
-    <title>Tic Tac Toe</title>
-</head>
-<body>
-    <main>
-        <section>
-            <h1>Tic Tac Toe</h1>
-            <div id="game-div" class="game-div">
-                <div  id="0" class="game-box"></div>
-                <div  id="1" class="game-box"></div>
-                <div  id="2" class="game-box"></div>
-                <div  id="3" class="game-box"></div>
-                <div  id="4" class="game-box"></div>
-                <div  id="5" class="game-box"></div>
-                <div  id="6" class="game-box"></div>
-                <div  id="7" class="game-box"></div>
-                <div  id="8" class="game-box"></div>
-            </div>
-            <button id="reset-button">Reset</button>
-        </section>
-    </main>
-</body>
-<script src="./index.js"></script>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="./styles.css" />
+        <title>Tic Tac Toe</title>
+    </head>
+    <body>
+        <main>
+            <section>
+                <h1>Tic Tac Toe</h1>
+                <div>
+                    <div id="game-div" class="game-div">
+                        <div id="0" class="game-box"></div>
+                        <div id="1" class="game-box"></div>
+                        <div id="2" class="game-box"></div>
+                        <div id="3" class="game-box"></div>
+                        <div id="4" class="game-box"></div>
+                        <div id="5" class="game-box"></div>
+                        <div id="6" class="game-box"></div>
+                        <div id="7" class="game-box"></div>
+                        <div id="8" class="game-box"></div>
+                    </div>
+                    <p id="status" id="status"></p>
+                </div>
+                <div>
+                    <div class="row-div">
+                        <div class="row-div">
+                            <label for="name-player1">Player 1 name</label>
+                            <input
+                                type="text"
+                                id="name-player1"
+                                class="player-name"
+                            />
+                        </div>
+                        <div class="row-div">
+                            <label for="name-player2">Player 2 name</label>
+                            <input
+                                type="text"
+                                id="name-player2"
+                                class="player-name"
+                            />
+                        </div>
+                        <button id="start-button">Start</button>
+                        <button id="reset-button">Reset</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </body>
+    <script src="./index.js"></script>
 </html>

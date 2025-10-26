@@ -19,3 +19,12 @@ h1 {
     margin-left: auto;
     margin-right: auto;
 }
+
+.row-div {
+    display: flex;
+    flex-direction: row;
+}
+
+label {
+    margin-right: 1rem;
+}
