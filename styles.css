@@ -23,13 +23,19 @@ body {
 
 body {
     font-family: "Arial", sans-serif;
-    padding: 0 2rem;
-    padding-bottom: 2rem;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+}
+
+main {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
 }
 
 .game-container {
@@ -133,6 +139,32 @@ p.status {
     margin-bottom: 2rem;
 }
 
+.footer {
+    text-align: center;
+    padding: 2rem 1rem;
+    background-color: var(--secondary-bg);
+    width: 100%;
+    border-top: 1px solid var(--border-color);
+    margin-top: auto;
+}
+
+.footer p {
+    margin: 0.5rem 0;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.footer a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.footer a:hover {
+    color: var(--hover-color);
+    text-decoration: underline;
+}
+
 .settings-div {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -141,7 +173,6 @@ p.status {
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     width: 100%;
-    max-width: 900px;
     margin: 0 auto;
 }
 
@@ -219,6 +250,14 @@ input.input-error {
         height: 80px;
         line-height: 80px;
         font-size: 1.8rem;
+    }
+
+    .footer {
+        padding: 1.5rem 1rem;
+    }
+
+    .footer p {
+        font-size: 0.85rem;
     }
 
     .settings-div {
