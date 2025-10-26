@@ -115,20 +115,34 @@ function createGame(player1Name, player2Name) {
 const playerNamesInput = document.querySelectorAll(".player-name");
 const gameBoxes = document.querySelectorAll(".game-box");
 const statusDisplay = document.querySelector("#status");
+const startButton = document.querySelector("#start-button");
 
 // Function to see if an input is empty
 function checkEmptyInput(element) {
     return element.value.trim() !== "";
 }
+// Function to change the input class based on error status
+function changeInputClass(inputs, statusParagraph, error = false) {
+    if (error) {
+        inputs.forEach((input) => input.classList.add("input-error"));
+        statusParagraph.classList.add("error");
+    } else {
+        inputs.forEach((input) => input.classList.remove("input-error"));
+        statusParagraph.classList.remove("error");
+    }
+}
 
 let game;
 // Event to start the game when the player clicks the start button
-document.querySelector("#start-button").addEventListener("click", () => {
+startButton.addEventListener("click", () => {
     // Only start the game if the name inputs are ccompleted and have different values
     if (
         [...playerNamesInput].every(checkEmptyInput) &&
         playerNamesInput[0].value !== playerNamesInput[1].value
     ) {
+        // Remove any error styles if present
+        changeInputClass(playerNamesInput, statusDisplay, false);
+
         game = createGame(playerNamesInput[0].value, playerNamesInput[1].value);
 
         // Add event listener to the game box to add the play to the board
@@ -141,7 +155,12 @@ document.querySelector("#start-button").addEventListener("click", () => {
         game.setBordBlocked(false);
 
         statusDisplay.innerHTML = `Game Started, it's ${playerNamesInput[0].value} turn`;
+
+        // If game starts we disable the buttons and inputs to avoid issues
+        startButton.disabled = true;
+        playerNamesInput.forEach((input) => (input.disabled = true));
     } else {
+        changeInputClass(playerNamesInput, statusDisplay, true);
         statusDisplay.innerHTML =
             "The names are invalid. Player names can't be left empty and need to be different";
     }
@@ -149,9 +168,9 @@ document.querySelector("#start-button").addEventListener("click", () => {
 
 // Event listener to reset the game
 document.querySelector("#reset-button").addEventListener("click", () => {
-    playerNamesInput[0].value = "";
-    playerNamesInput[1].value = "";
     statusDisplay.innerHTML = "";
+    startButton.disabled = false;
+    playerNamesInput.forEach((input) => (input.disabled = false));
 
     if (game !== undefined) {
         game.resetGameBoard(gameBoxes);
